@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import com.kdbf.digitalLibrary.application.domain.exception.NoTitleException;
+
 public class BookTest {
 
   @Test
@@ -26,14 +28,18 @@ public class BookTest {
   @Test
   public void shouldNotCreateBookWithEmptyTitle() {
     NoTitleException exception = assertThrows(NoTitleException.class, () -> {
-      Book myBook = new Book("", "Anonymous", null, null);
-    })
+      Book myBook = new Book("", "Anonymous", "", 0);
+    });
+
+    assertEquals("A book's title cant be empty.", exception.getMessage());
   }
 
   @Test
-  public void shouldNotCreateBookWithNullTitle(){
+  public void shouldNotCreateBookWithNullTitle() {
     NoTitleException exception = assertThrows(NoTitleException.class, () -> {
-      Book myBook = new Book(null, "Anonymous", null, null);
-    })
+      Book myBook = new Book(null, "Anonymous", "", 0);
+    });
+
+    assertEquals("A book's title cant be null.", exception.getMessage());
   }
 }
