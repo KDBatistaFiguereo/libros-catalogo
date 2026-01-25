@@ -3,6 +3,7 @@ package com.kdbf.digitalLibrary.application.domain.entity;
 import java.util.UUID;
 
 import com.kdbf.digitalLibrary.application.domain.exception.NoTitleException;
+import com.kdbf.digitalLibrary.application.domain.exception.NotValidAuthorException;
 
 import lombok.Getter;
 
@@ -11,13 +12,17 @@ public class Book {
 
   private UUID publicid;
   private String title;
-  private String author;
+  private Author author;
   private String language;
   private int downloads;
 
-  public Book(String title, String author, String language, int downloads) {
+  public Book(String title, Author author, String language, int downloads) {
 
     title = validateTitle(title);
+
+    if (author == null) {
+      throw new NotValidAuthorException("An author can't be null.");
+    }
 
     this.publicid = UUID.randomUUID();
     this.title = title;
