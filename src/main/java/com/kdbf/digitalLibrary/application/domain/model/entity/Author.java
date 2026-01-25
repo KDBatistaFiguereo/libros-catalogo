@@ -1,8 +1,8 @@
-package com.kdbf.digitalLibrary.application.domain.entity;
+package com.kdbf.digitalLibrary.application.domain.model.entity;
 
 import java.util.UUID;
 
-import com.kdbf.digitalLibrary.application.domain.exception.NotValidAuthorException;
+import com.kdbf.digitalLibrary.application.domain.model.exception.NotValidAuthorException;
 
 import lombok.Getter;
 
