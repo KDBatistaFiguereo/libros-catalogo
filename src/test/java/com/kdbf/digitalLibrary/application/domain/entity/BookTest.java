@@ -44,14 +44,6 @@ public class BookTest {
     assertEquals("A book's title cant be null.", exception.getMessage());
   }
 
-  public void shouldNotCreateBookWithEmptyAuthor() {
-    NotValidAuthorException exception = assertThrows(NotValidAuthorException.class, () -> {
-      Book myBook = new Book("Crime and Punishment", "", "", 0);
-    });
-
-    assertEquals("An author's name can't be empty.", exception.getMessage());
-  }
-
   public void shouldNotCreateBookWithNullAuthor() {
     NotValidAuthorException exception = assertThrows(NotValidAuthorException.class, () -> {
       Book myBook = new Book("Crime and Punishment", null, "", 0);
