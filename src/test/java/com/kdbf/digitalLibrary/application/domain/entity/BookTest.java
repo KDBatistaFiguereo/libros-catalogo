@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import com.kdbf.digitalLibrary.application.domain.model.entity.Author;
+import com.kdbf.digitalLibrary.application.domain.model.entity.Book;
 import com.kdbf.digitalLibrary.application.domain.model.exception.NoTitleException;
 import com.kdbf.digitalLibrary.application.domain.model.exception.NotValidAuthorException;
 
