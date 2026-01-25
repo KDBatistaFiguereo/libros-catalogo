@@ -17,6 +17,16 @@ public class Book {
 
   public Book(String title, String author, String language, int downloads) {
 
+    title = validateTitle(title);
+
+    this.publicid = UUID.randomUUID();
+    this.title = title;
+    this.author = author;
+    this.language = language;
+    this.downloads = downloads;
+  }
+
+  private String validateTitle(String title) {
     if (title == null) {
       throw new NoTitleException("A book's title cant be null.");
     }
@@ -24,11 +34,6 @@ public class Book {
     if (title.isEmpty()) {
       throw new NoTitleException("A book's title cant be empty.");
     }
-
-    this.publicid = UUID.randomUUID();
-    this.title = title;
-    this.author = author;
-    this.language = language;
-    this.downloads = downloads;
+    return title;
   }
 }
