@@ -17,6 +17,7 @@ public class AuthorTest {
     assertEquals(name, author.getName());
   }
 
+  @Test
   public void shouldNotCreateAuthorWithEmptyName() {
     NotValidAuthorException exception = assertThrows(NotValidAuthorException.class, () -> {
       new Author("");
@@ -24,6 +25,7 @@ public class AuthorTest {
     assertEquals("An author's name cant be empty.", exception.getMessage());
   }
 
+  @Test
   public void shouldNotCreateAuthorWithNullName() {
     NotValidAuthorException exception = assertThrows(NotValidAuthorException.class, () -> {
       new Author(null);
