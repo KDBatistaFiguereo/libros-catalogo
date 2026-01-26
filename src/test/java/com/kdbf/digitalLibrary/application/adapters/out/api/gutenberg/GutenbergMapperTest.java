@@ -4,22 +4,31 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.File;
-import java.util.Set;
-
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.time.Year;
 import org.junit.jupiter.api.Test;
 
-import com.kdbf.digitalLibrary.application.domain.model.entity.Book;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.GutenbergMapper;
+import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.dto.GutenbergAuthorDto;
+import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.dto.GutenbergResponseDto;
 
 public class GutenbergMapperTest {
 
   @Test
-  public void shouldConvertToDto() {
-    File gutenbergResponseJson = new File("/resources/dummy-data/GutenbergResponse.json");
-    GutenbergMapper mapper() = new GutenbergMapper();
-    GutenbergResponseDto responseDto = mapper.toDto(gutenbergResponseJson);
-    GutenbergAuthorDto authorDto = 
-      new GutenbergAuthorDto("Stevenson, Robert Louis", 1850, 1894);
+  public void shouldConvertToDto() throws Exception {
+    InputStream gutenbergResponseJson = getClass().getClassLoader()
+        .getResourceAsStream("dummy-data/GutenbergResponse.json");
+    String jsonString = new String(gutenbergResponseJson.readAllBytes(), StandardCharsets.UTF_8);
+
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.registerModule(new JavaTimeModule());
+    GutenbergMapper mapper = new GutenbergMapper(objectMapper);
+
+    GutenbergResponseDto responseDto = mapper.toDto(jsonString);
+    GutenbergAuthorDto authorDto = new GutenbergAuthorDto("Stevenson, Robert Louis", Year.of(1850), Year.of(1894));
 
     assertNotNull(responseDto);
     assertEquals(2, responseDto.count());
