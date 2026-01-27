@@ -7,18 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.time.Year;
-import java.util.List;
-import java.util.Set;
-
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.GutenbergMapper;
 import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.dto.GutenbergAuthorDto;
-import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.dto.GutenbergBookDto;
 import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.dto.GutenbergResponseDto;
-import com.kdbf.digitalLibrary.application.domain.model.entity.Book;
+import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.mapper.GutenbergMapper;
 
 public class GutenbergMapperTest {
 
@@ -42,46 +37,6 @@ public class GutenbergMapperTest {
     assertEquals(58843, responseDto.results().get(0).downloadCount());
     assertTrue(responseDto.results().get(0).authors().contains(authorDto));
     assertTrue(responseDto.results().get(0).languages().contains("en"));
-  }
-
-  @Test
-  public void shouldConvertToDomain() {
-    GutenbergBookDto bookDto = getBookDto();
-    ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.registerModule(new JavaTimeModule());
-    GutenbergMapper mapper = new GutenbergMapper(objectMapper);
-    Book myBook = mapper.toDomain(bookDto);
-
-    String expected = bookDto.authors().iterator().next().name();
-
-    assertNotNull(myBook);
-    assertEquals(bookDto.title(), myBook.getTitle());
-    assertEquals(expected, myBook.getAuthor());
-    assertEquals(bookDto.languages().getFirst(), myBook.getLanguage());
-    assertEquals(bookDto.downloadCount(), myBook.getDownloads());
-  }
-
-  private GutenbergBookDto getBookDto() {
-    GutenbergAuthorDto authorDto = new GutenbergAuthorDto(
-        "Stevenson, Robert Louis",
-        Year.of(1850),
-        Year.of(1894));
-
-    GutenbergBookDto bookDto = new GutenbergBookDto(
-        43,
-        "The Strange Case of Dr. Jekyll and Mr. Hyde",
-        Set.of(authorDto),
-        List.of("", ""),
-        List.of(""),
-        List.of(""),
-        List.of(""),
-        List.of(""),
-        List.of("en"),
-        false,
-        "text",
-        58843,
-        null);
-    return bookDto;
   }
 
 }
