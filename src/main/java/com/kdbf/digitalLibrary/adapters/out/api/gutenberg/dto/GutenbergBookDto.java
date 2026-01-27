@@ -1,17 +1,20 @@
 package com.kdbf.digitalLibrary.adapters.out.api.gutenberg.dto;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record GutenbergBookDto(
     int id,
     String title,
-    Set<GutenbergAuthorDto> authors,
+    // Necessary to use LinkedHashSet when retrieving the first author
+    @JsonDeserialize(as = LinkedHashSet.class) Set<GutenbergAuthorDto> authors,
     List<String> summaries,
     List<String> editors,
     List<String> translators,
