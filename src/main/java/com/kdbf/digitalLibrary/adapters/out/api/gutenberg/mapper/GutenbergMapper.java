@@ -1,9 +1,10 @@
 package com.kdbf.digitalLibrary.adapters.out.api.gutenberg.mapper;
 
+import java.io.IOException;
+import java.io.UncheckedIOException;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.dto.GutenbergBookDto;
 import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.dto.GutenbergResponseDto;
-import com.kdbf.digitalLibrary.application.domain.model.entity.Book;
 
 public class GutenbergMapper {
   private final ObjectMapper objectMapper;
@@ -12,13 +13,12 @@ public class GutenbergMapper {
     this.objectMapper = objectMapper;
   }
 
-  public GutenbergResponseDto toDto(String jsonResponse) throws Exception {
-    GutenbergResponseDto response = objectMapper.readValue(jsonResponse, GutenbergResponseDto.class);
-    return response;
+  public GutenbergResponseDto toDto(String jsonResponse) {
+    try {
+      GutenbergResponseDto response = objectMapper.readValue(jsonResponse, GutenbergResponseDto.class);
+      return response;
+    } catch (IOException e) {
+      throw new UncheckedIOException("Could not process the JSON", e);
+    }
   }
-
-  public Book toDomain(GutenbergBookDto bookDto) {
-    return null;
-  }
-
 }
