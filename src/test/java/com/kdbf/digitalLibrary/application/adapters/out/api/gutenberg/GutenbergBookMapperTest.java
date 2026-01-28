@@ -10,24 +10,23 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.dto.GutenbergAuthorDto;
 import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.dto.GutenbergBookDto;
-import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.mapper.GutenbergMapper;
+import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.mapper.GutenbergBookMapper;
 import com.kdbf.digitalLibrary.application.domain.model.entity.Book;
 
 public class GutenbergBookMapperTest {
+  public static final GutenbergBookMapper mapper = Mappers.getMapper(GutenbergBookMapper.class);
+
   @Test
   public void shouldConvertToDomain() {
-    private final GutenbergBookMapper mapper = Mappers.getMapper(GutenbergBookMapper.class);
     GutenbergBookDto bookDto = getBookDto();
     Book myBook = mapper.toDomain(bookDto);
     String expected = bookDto.authors().iterator().next().name();
 
     assertNotNull(myBook);
     assertEquals(bookDto.title(), myBook.getTitle());
-    assertEquals(expected, myBook.getAuthor());
+    assertEquals(expected, myBook.getAuthor().getName());
     assertEquals(bookDto.languages().getFirst(), myBook.getLanguage());
     assertEquals(bookDto.downloadCount(), myBook.getDownloads());
   }
