@@ -1,3 +1,8 @@
 spring:
   application:
     name: digitalLibrary
+  main:
+    web-application-type: none
+  shell:
+    interactive:
+      enabled: true
