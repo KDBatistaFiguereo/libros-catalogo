@@ -1,8 +1,6 @@
 spring:
   application:
     name: digitalLibrary
-  main:
-    web-application-type: none
-  shell:
-    interactive:
-      enabled: true
+api:
+  gutenberg:
+    base-url: "https://gutendex.com/books/"

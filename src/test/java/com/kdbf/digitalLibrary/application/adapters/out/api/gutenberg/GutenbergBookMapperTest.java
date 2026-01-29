@@ -42,7 +42,6 @@ public class GutenbergBookMapperTest {
         "The Strange Case of Dr. Jekyll and Mr. Hyde",
         Set.of(authorDto),
         List.of("", ""),
-        List.of(),
         List.of(""),
         List.of(""),
         List.of("en"),

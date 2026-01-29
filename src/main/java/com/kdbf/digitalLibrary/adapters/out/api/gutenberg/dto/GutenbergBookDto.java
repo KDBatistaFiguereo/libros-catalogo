@@ -15,7 +15,6 @@ public record GutenbergBookDto(
     // Necessary to use LinkedHashSet when retrieving the first author
     @JsonDeserialize(as = LinkedHashSet.class) Set<GutenbergAuthorDto> authors,
     List<String> summaries,
-    List<String> editors,
     List<String> subjects,
     List<String> bookshelves,
     List<String> languages,
