@@ -1,4 +1,4 @@
-package com.kdbf.digitalLibrary.application.adapters.out.api.gutenberg;
+package com.kdbf.digitalLibrary.adapters.out.api.gutenberg;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,8 +16,6 @@ import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.GutenbergAdapter;
-import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.GutenbergApiClient;
 import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.mapper.GutenbergBookMapper;
 import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.mapper.GutenbergMapper;
 import com.kdbf.digitalLibrary.application.domain.model.entity.Book;

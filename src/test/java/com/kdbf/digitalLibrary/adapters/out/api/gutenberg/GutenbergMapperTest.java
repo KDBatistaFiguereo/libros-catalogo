@@ -1,4 +1,4 @@
-package com.kdbf.digitalLibrary.application.adapters.out.api.gutenberg;
+package com.kdbf.digitalLibrary.adapters.out.api.gutenberg;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

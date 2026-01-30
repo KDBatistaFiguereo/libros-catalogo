@@ -1,4 +1,4 @@
-package com.kdbf.digitalLibrary.application.adapters.in.web;
+package com.kdbf.digitalLibrary.adapters.in.web;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -19,7 +19,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.kdbf.digitalLibrary.adapters.in.web.BookSearchController;
 import com.kdbf.digitalLibrary.application.domain.model.entity.Author;
 import com.kdbf.digitalLibrary.application.domain.model.entity.Book;
 import com.kdbf.digitalLibrary.application.domain.service.FindBooksByTitleService;
