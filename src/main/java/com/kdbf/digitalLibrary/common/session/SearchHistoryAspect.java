@@ -20,7 +20,7 @@ public class SearchHistoryAspect {
 
   @AfterReturning(pointcut = "execution(List<Book> com.kdbf.digitalLibrary.application.service." +
       "FindBooksByTitleService.findBooksByTitle(..))", returning = "books")
-  private void registerHistory(List<Book> books) {
+  public void registerHistory(List<Book> books) {
     searchHistory.addBooks(books);
 
   }
