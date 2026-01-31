@@ -18,11 +18,9 @@ public class SearchHistoryAspect {
     this.searchHistory = searchHistory;
   }
 
-  @AfterReturning(pointcut = "execution(List<Book> com.kdbf.digitalLibrary.application.service." +
-      "FindBooksByTitleService.findBooksByTitle(..))", returning = "books")
+  @AfterReturning(pointcut = "execution(* com.kdbf.digitalLibrary.application.port.in.FindBooksByTitleUseCase.findBooksByTitle(..))", returning = "books")
   public void registerHistory(List<Book> books) {
     searchHistory.addBooks(books);
-
   }
 
 }
