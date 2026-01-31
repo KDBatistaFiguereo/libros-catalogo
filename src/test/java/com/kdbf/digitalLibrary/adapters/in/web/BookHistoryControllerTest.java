@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import java.time.Year;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,9 @@ public class BookHistoryControllerTest {
   public void shouldReturnBookHistory() throws Exception {
     when(bookSearchHistory.getBookHistory()).thenReturn(List.of(
         new Book("The Strange case of Dr Jekyll and Mr Hyde",
-            new Author("Stevenson, Robert Louis"),
+            new Author("Stevenson, Robert Louis",
+                Year.of(1850),
+                Year.of(1894)),
             "en",
             10)));
     mockMvc.perform(get("/libros/historial"))

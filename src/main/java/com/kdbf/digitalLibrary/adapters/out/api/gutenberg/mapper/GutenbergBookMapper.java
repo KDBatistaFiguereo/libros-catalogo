@@ -22,9 +22,11 @@ public abstract class GutenbergBookMapper {
   @Named("getFirstAuthor")
   protected Author getFirstAuthor(Set<GutenbergAuthorDto> authors) {
     if (authors == null || authors.isEmpty()) {
-      return new Author("Anonymous");
+      return new Author("Anonymous", null, null);
     }
-    return new Author(authors.iterator().next().name());
+    return new Author(authors.iterator().next().name(),
+        authors.iterator().next().birthYear(),
+        authors.iterator().next().deathYear());
   }
 
   @Named("getFirstLanguage")

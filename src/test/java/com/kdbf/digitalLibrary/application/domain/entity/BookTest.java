@@ -16,7 +16,7 @@ public class BookTest {
   @Test
   public void shouldCreateBookNormally() {
     String title = "Crime and Punishment";
-    Author author = new Author("Fyodor Dostoyevsky");
+    Author author = new Author("Fyodor Dostoyevsky", null, null);
     String language = "EN";
     int downloads = 10;
     Book myBook = new Book(title, author, language, downloads);
@@ -31,7 +31,7 @@ public class BookTest {
   @Test
   public void shouldNotCreateBookWithEmptyTitle() {
     NoTitleException exception = assertThrows(NoTitleException.class, () -> {
-      Book myBook = new Book("", new Author("Anonymous"), "", 0);
+      Book myBook = new Book("", new Author("Anonymous", null, null), "", 0);
     });
 
     assertEquals("A book's title cant be empty.", exception.getMessage());
@@ -40,7 +40,7 @@ public class BookTest {
   @Test
   public void shouldNotCreateBookWithNullTitle() {
     NoTitleException exception = assertThrows(NoTitleException.class, () -> {
-      Book myBook = new Book(null, new Author("Anonymous"), "", 0);
+      Book myBook = new Book(null, new Author("Anonymous", null, null), "", 0);
     });
 
     assertEquals("A book's title cant be null.", exception.getMessage());

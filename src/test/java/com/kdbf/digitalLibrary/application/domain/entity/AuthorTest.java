@@ -13,7 +13,7 @@ public class AuthorTest {
   @Test
   public void shouldCreateAuthor() {
     String name = "Fyodor Dostoyevsky";
-    Author author = new Author(name);
+    Author author = new Author(name, null, null);
 
     assertEquals(name, author.getName());
   }
@@ -21,7 +21,7 @@ public class AuthorTest {
   @Test
   public void shouldNotCreateAuthorWithEmptyName() {
     NotValidAuthorException exception = assertThrows(NotValidAuthorException.class, () -> {
-      new Author("");
+      new Author("", null, null);
     });
     assertEquals("An author's name cant be empty.", exception.getMessage());
   }
@@ -29,7 +29,7 @@ public class AuthorTest {
   @Test
   public void shouldNotCreateAuthorWithNullName() {
     NotValidAuthorException exception = assertThrows(NotValidAuthorException.class, () -> {
-      new Author(null);
+      new Author(null, null, null);
     });
     assertEquals("An author's name cant be null.", exception.getMessage());
   }

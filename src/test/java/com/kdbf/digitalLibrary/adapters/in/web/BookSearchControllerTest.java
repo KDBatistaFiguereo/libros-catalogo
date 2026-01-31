@@ -11,6 +11,7 @@ import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 
+import java.time.Year;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -39,11 +40,15 @@ public class BookSearchControllerTest {
     when(findByTitleService.findBooksByTitle(query)).thenReturn(
         List.of(
             new Book("The Strange case of Dr Jekyll and Mr Hyde",
-                new Author("Stevenson, Robert Louis"),
+                new Author("Stevenson, Robert Louis",
+                    Year.of(1850),
+                    Year.of(1894)),
                 "en",
                 10),
             new Book("The Strange case of Dr Jekyll and Mr Hyde",
-                new Author("Stevenson, Robert Louis"),
+                new Author("Stevenson, Robert Louis",
+                    Year.of(1850),
+                    Year.of(1894)),
                 "en",
                 20)));
     mockMvc.perform(get("/libros/busqueda").param("title", "strange"))

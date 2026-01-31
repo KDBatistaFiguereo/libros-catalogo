@@ -16,11 +16,11 @@ public class BookSearchHistoryTest {
 
     List<Book> myBooks = List.of(
         new Book("Crime and punishment",
-            new Author("Fyodor Dostoyevsky"),
+            new Author("Fyodor Dostoyevsky", null, null),
             "en",
             10),
         new Book("Don Quixote",
-            new Author("Cervantes"),
+            new Author("Cervantes", null, null),
             "en",
             15));
     BookSearchHistory searchHistory = new BookSearchHistory();
@@ -36,11 +36,11 @@ public class BookSearchHistoryTest {
   public void shouldNotAddDuplicates() {
     List<Book> myBooks = List.of(
         new Book("Crime and punishment",
-            new Author("Fyodor Dostoyevsky"),
+            new Author("Fyodor Dostoyevsky", null, null),
             "en",
             10),
         new Book("Don Quixote",
-            new Author("Cervantes"),
+            new Author("Cervantes", null, null),
             "en",
             15));
     BookSearchHistory searchHistory = new BookSearchHistory();
