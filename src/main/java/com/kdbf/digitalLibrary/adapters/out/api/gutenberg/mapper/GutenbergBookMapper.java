@@ -11,6 +11,7 @@ import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.dto.GutenbergBookDto;
 import com.kdbf.digitalLibrary.application.domain.model.entity.Author;
 import com.kdbf.digitalLibrary.application.domain.model.entity.Book;
 
+//TODO add list mappers
 @Mapper(componentModel = "spring")
 public abstract class GutenbergBookMapper {
   @Mapping(source = "title", target = "title")

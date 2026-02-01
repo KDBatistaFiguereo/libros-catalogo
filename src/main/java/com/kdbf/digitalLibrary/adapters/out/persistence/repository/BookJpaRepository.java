@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.kdbf.digitalLibrary.adapters.out.persistence.BookJpaEntity;
+import com.kdbf.digitalLibrary.adapters.out.persistence.entity.BookJpaEntity;
 
 public interface BookJpaRepository extends JpaRepository<BookJpaEntity, Long> {
 

@@ -6,8 +6,10 @@ import java.util.UUID;
 import com.kdbf.digitalLibrary.application.domain.model.exception.NotValidAuthorException;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class Author {
 
   private UUID publicId;

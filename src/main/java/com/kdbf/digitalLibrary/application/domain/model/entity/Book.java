@@ -10,7 +10,7 @@ import lombok.Getter;
 @Getter
 public class Book {
 
-  private UUID publicid;
+  private UUID publicId;
   private String title;
   private Author author;
   private String language;
@@ -24,7 +24,7 @@ public class Book {
       throw new NotValidAuthorException("An author can't be null.");
     }
 
-    this.publicid = UUID.randomUUID();
+    this.publicId = UUID.randomUUID();
     this.title = title;
     this.author = author;
     this.language = language;

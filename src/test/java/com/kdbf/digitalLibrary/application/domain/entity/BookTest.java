@@ -21,7 +21,7 @@ public class BookTest {
     int downloads = 10;
     Book myBook = new Book(title, author, language, downloads);
 
-    assertNotNull(myBook.getPublicid());
+    assertNotNull(myBook.getPublicId());
     assertEquals(title, myBook.getTitle());
     assertEquals(author, myBook.getAuthor());
     assertEquals(language, myBook.getLanguage());

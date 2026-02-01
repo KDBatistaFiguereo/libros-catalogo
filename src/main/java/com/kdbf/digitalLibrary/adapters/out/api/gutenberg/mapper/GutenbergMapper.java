@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kdbf.digitalLibrary.adapters.out.api.gutenberg.dto.GutenbergResponseDto;
 
+//TODO add list mappers
 @Component
 public class GutenbergMapper {
   private final ObjectMapper objectMapper;

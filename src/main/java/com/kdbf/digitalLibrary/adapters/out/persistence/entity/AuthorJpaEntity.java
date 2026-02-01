@@ -1,7 +1,6 @@
-package com.kdbf.digitalLibrary.adapters.out.persistence;
+package com.kdbf.digitalLibrary.adapters.out.persistence.entity;
 
 import java.time.Year;
-import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -9,15 +8,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "author")
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class AuthorJpaEntity {
 
   @Id
@@ -32,9 +34,6 @@ public class AuthorJpaEntity {
   private Year birthYear;
   @Column
   private Year deathYear;
-
-  @OneToMany(mappedBy = "author")
-  private List<BookJpaEntity> books;
 
   @Override
   public int hashCode() {

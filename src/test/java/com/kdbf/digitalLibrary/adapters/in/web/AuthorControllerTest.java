@@ -1,7 +1,8 @@
 package com.kdbf.digitalLibrary.adapters.in.web;
 
-import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.when;
+import static org.hamcrest.Matchers.hasSize;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -17,11 +18,10 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.kdbf.digitalLibrary.application.domain.model.entity.Author;
-import com.kdbf.digitalLibrary.application.domain.model.entity.Book;
 import com.kdbf.digitalLibrary.common.session.BookSearchHistory;
 
-@WebMvcTest(BookHistoryController.class)
-public class BookHistoryControllerTest {
+@WebMvcTest(AuthorController.class)
+public class AuthorControllerTest {
 
   @Autowired
   private MockMvc mockMvc;
@@ -30,20 +30,17 @@ public class BookHistoryControllerTest {
   private BookSearchHistory bookSearchHistory;
 
   @Test
-  public void shouldReturnBookHistory() throws Exception {
-    when(bookSearchHistory.getBookHistory()).thenReturn(List.of(
-        new Book("The Strange case of Dr Jekyll and Mr Hyde",
-            new Author("Stevenson, Robert Louis",
-                Year.of(1850),
-                Year.of(1894)),
-            "en",
-            10)));
-    mockMvc.perform(get("/libros/historial"))
-        .andExpect(status().isOk())
-        .andExpect(view().name("book-history"))
-        .andExpect(model().attributeExists("historyList"))
-        .andExpect(model().attribute("historyList", hasSize(1)));
+  public void shouldReturnPreviousAuthors() throws Exception {
+    when(bookSearchHistory.getAuthors()).thenReturn(List.of(
+        new Author("Stevenson, Robert Louis",
+            Year.of(1850),
+            Year.of(1894))));
 
+    mockMvc.perform(get("/libros/autores"))
+        .andExpect(status().isOk())
+        .andExpect(view().name("authors"))
+        .andExpect(model().attributeExists("authorList"))
+        .andExpect(model().attribute("authorList", hasSize(1)));
   }
 
 }
