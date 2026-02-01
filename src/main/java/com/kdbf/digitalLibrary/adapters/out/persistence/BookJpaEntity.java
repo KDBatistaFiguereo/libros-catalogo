@@ -21,9 +21,9 @@ public class BookJpaEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
+  private Long id;
 
-  @Column(nullable = false)
+  @Column(nullable = false, unique = true)
   private UUID publicId;
   @Column
   private String title;

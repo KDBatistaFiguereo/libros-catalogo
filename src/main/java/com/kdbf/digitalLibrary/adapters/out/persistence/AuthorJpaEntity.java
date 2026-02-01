@@ -24,7 +24,7 @@ public class AuthorJpaEntity {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
-  @Column(nullable = false)
+  @Column(nullable = false, unique = true)
   private UUID publicId;
   @Column(nullable = false)
   private String name;
