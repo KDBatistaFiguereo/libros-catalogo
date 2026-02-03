@@ -8,6 +8,7 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.TargetType;
 import org.springframework.stereotype.Component;
 
+@Component
 public class CycleAvoidingMappingContext {
   private Map<Object, Object> knownInstances = new IdentityHashMap<>();
 

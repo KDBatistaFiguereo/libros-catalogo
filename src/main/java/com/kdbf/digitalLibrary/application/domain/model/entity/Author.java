@@ -17,12 +17,17 @@ public class Author {
   private Year birthYear;
   private Year deathYear;
 
-  public Author(String name, Year birthYear, Year deathYear) {
+  @Default
+  public Author(String name, Year birthYear, Year deathYear, UUID publicId) {
     name = validateName(name);
-    publicId = UUID.randomUUID();
+    this.publicId = publicId;
     this.name = name;
     this.birthYear = birthYear;
     this.deathYear = deathYear;
+  }
+
+  public Author(String name, Year birthYear, Year deathYear) {
+    this(name, birthYear, deathYear, null);
   }
 
   private String validateName(String name) {

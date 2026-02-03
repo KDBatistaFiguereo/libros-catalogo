@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import com.kdbf.digitalLibrary.adapters.out.persistence.entity.AuthorJpaEntity;
 import com.kdbf.digitalLibrary.adapters.out.persistence.utility.CycleAvoidingMappingContext;
@@ -14,6 +15,7 @@ public interface AuthorJpaMapper {
 
   Author toDomain(AuthorJpaEntity jpaEntity, @Context CycleAvoidingMappingContext context);
 
+  @Mapping(target = "publicId", ignore = true)
   AuthorJpaEntity toJpa(Author author, @Context CycleAvoidingMappingContext context);
 
   List<Author> toDomain(List<AuthorJpaEntity> jpaEntities, @Context CycleAvoidingMappingContext context);

@@ -16,7 +16,8 @@ public class Book {
   private String language;
   private int downloads;
 
-  public Book(String title, Author author, String language, int downloads) {
+  @Default
+  public Book(String title, Author author, String language, int downloads, UUID publicId) {
 
     title = validateTitle(title);
 
@@ -24,11 +25,15 @@ public class Book {
       throw new NotValidAuthorException("An author can't be null.");
     }
 
-    this.publicId = UUID.randomUUID();
+    this.publicId = publicId;
     this.title = title;
     this.author = author;
     this.language = language;
     this.downloads = downloads;
+  }
+
+  public Book(String title, Author author, String language, int downloads) {
+    this(title, author, language, downloads, null);
   }
 
   private String validateTitle(String title) {

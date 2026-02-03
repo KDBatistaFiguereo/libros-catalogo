@@ -2,6 +2,7 @@ package com.kdbf.digitalLibrary.adapters.out.persistence.entity;
 
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,13 +11,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "book")
 @Setter
@@ -27,8 +26,8 @@ public class BookJpaEntity {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  @Column(nullable = false, unique = true)
-  private UUID publicId;
+  @Column(nullable = false, unique = true, updatable = false)
+  private UUID publicId = UUID.randomUUID();
   @Column
   private String title;
   @Column
@@ -36,9 +35,17 @@ public class BookJpaEntity {
   @Column
   private int downloads;
 
-  @ManyToOne
+  @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JoinColumn(name = "author_id", nullable = false)
   private AuthorJpaEntity author;
+
+  public BookJpaEntity(Long id, String title, String language, int downloads, AuthorJpaEntity author) {
+    this.id = id;
+    this.title = title;
+    this.language = language;
+    this.downloads = downloads;
+    this.author = author;
+  }
 
   @Override
   public int hashCode() {

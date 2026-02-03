@@ -8,5 +8,5 @@ import com.kdbf.digitalLibrary.application.domain.model.entity.Book;
 public interface LoadBooksPort {
   Optional<Book> findByPublicId(UUID publicId);
 
-  Boolean existsByPublicId(UUID publicId);
+  boolean existsByPublicId(UUID publicId);
 }

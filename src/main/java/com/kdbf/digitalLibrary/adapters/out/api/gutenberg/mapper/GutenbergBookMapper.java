@@ -2,6 +2,7 @@ package com.kdbf.digitalLibrary.adapters.out.api.gutenberg.mapper;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -23,11 +24,12 @@ public abstract class GutenbergBookMapper {
   @Named("getFirstAuthor")
   protected Author getFirstAuthor(Set<GutenbergAuthorDto> authors) {
     if (authors == null || authors.isEmpty()) {
-      return new Author("Anonymous", null, null);
+      return new Author("Anonymous", null, null, UUID.randomUUID());
     }
     return new Author(authors.iterator().next().name(),
         authors.iterator().next().birthYear(),
-        authors.iterator().next().deathYear());
+        authors.iterator().next().deathYear(),
+        UUID.randomUUID());
   }
 
   @Named("getFirstLanguage")

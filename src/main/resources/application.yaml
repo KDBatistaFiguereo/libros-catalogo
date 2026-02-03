@@ -4,3 +4,11 @@ spring:
 api:
   gutenberg:
     base-url: "https://gutendex.com/books/"
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:tc:postgresql:18
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver

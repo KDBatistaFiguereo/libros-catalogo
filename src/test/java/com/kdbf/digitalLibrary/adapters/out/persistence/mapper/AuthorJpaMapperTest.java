@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.time.Year;
 import java.util.List;
-import java.util.UUID;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +29,7 @@ public class AuthorJpaMapperTest {
 
   @Test
   void testToDomain() {
-    AuthorJpaEntity authorJpa = new AuthorJpaEntity(1L, UUID.randomUUID(), "Test Author", Year.of(1980), null);
+    AuthorJpaEntity authorJpa = new AuthorJpaEntity(1L, "Test Author", Year.of(1980), null);
 
     Author author = authorJpaMapper.toDomain(authorJpa, context);
 
@@ -43,7 +41,7 @@ public class AuthorJpaMapperTest {
 
   @Test
   void testToDomainWithDeathYear() {
-    AuthorJpaEntity authorJpa = new AuthorJpaEntity(1L, UUID.randomUUID(), "Test Author", Year.of(1960), Year.of(2020));
+    AuthorJpaEntity authorJpa = new AuthorJpaEntity(1L, "Test Author", Year.of(1960), Year.of(2020));
 
     Author author = authorJpaMapper.toDomain(authorJpa, context);
 
@@ -79,8 +77,8 @@ public class AuthorJpaMapperTest {
 
   @Test
   void testToDomainList() {
-    AuthorJpaEntity authorJpa1 = new AuthorJpaEntity(1L, UUID.randomUUID(), "Author 1", Year.of(1980), null);
-    AuthorJpaEntity authorJpa2 = new AuthorJpaEntity(2L, UUID.randomUUID(), "Author 2", Year.of(1970), Year.of(2020));
+    AuthorJpaEntity authorJpa1 = new AuthorJpaEntity(1L, "Author 1", Year.of(1980), null);
+    AuthorJpaEntity authorJpa2 = new AuthorJpaEntity(2L, "Author 2", Year.of(1970), Year.of(2020));
 
     List<AuthorJpaEntity> authorJpaList = List.of(authorJpa1, authorJpa2);
     List<Author> authors = authorJpaMapper.toDomain(authorJpaList, context);
