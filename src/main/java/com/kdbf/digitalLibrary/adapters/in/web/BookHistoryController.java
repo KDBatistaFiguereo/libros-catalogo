@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kdbf.digitalLibrary.application.domain.model.entity.Book;
 import com.kdbf.digitalLibrary.application.domain.service.GetBooksService;
@@ -27,9 +28,14 @@ public class BookHistoryController {
   }
 
   @GetMapping("/libros")
-  public String showSavedBooks(Model model) {
-    List<Book> allBooks = getBooksService.getAllBooks();
-    model.addAttribute("savedBooks", allBooks);
+  public String showSavedBooks(@RequestParam(required = false) String language, Model model) {
+    List<Book> savedBooks;
+    if (language == null) {
+      savedBooks = getBooksService.getAllBooks();
+    } else {
+      savedBooks = getBooksService.filterSavedBooksLang(language);
+    }
+    model.addAttribute("savedBooks", savedBooks);
     return "saved-books";
   }
 
