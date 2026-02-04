@@ -39,7 +39,7 @@ public class GetBooksService {
 
   public List<Book> filterSavedBooksLang(String language) {
     return getAllBooks().stream()
-        .filter(x -> x.getLanguage().equals(language))
+        .filter(x -> x.getLanguage().trim().equalsIgnoreCase(language))
         .toList();
   }
 }

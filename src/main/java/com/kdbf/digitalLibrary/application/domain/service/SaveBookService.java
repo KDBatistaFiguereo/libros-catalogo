@@ -23,7 +23,7 @@ public class SaveBookService implements SaveBookUseCase {
         command.deathYear());
     Book book = new Book(command.title(),
         author,
-        command.title(),
+        command.language(),
         command.downloads());
     return persistPort.createBook(book);
 
