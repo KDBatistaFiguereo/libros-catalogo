@@ -37,3 +37,4 @@ notes/
 
 digitalLibrary.log
 spring-shell.log
+.env
