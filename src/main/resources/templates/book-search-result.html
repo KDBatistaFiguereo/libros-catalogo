@@ -14,6 +14,30 @@
           <p th:text="${book.author.name}">Autor</p>
           <span th:text="${book.language}">Idioma</span>
           <span th:text="${book.downloads}">Descargas</span>
+          <form th:action="@{/libros/guardar}" method="post">
+            <input type="hidden" name="title" value="${book.title}" />
+            <input
+              type="hidden"
+              name="authorName"
+              value="${book.author.name}"
+            />
+            <input
+              type="hidden"
+              name="birthYear"
+              value="${book.author.birthYear}"
+            />
+            <input
+              type="hidden"
+              name="deathYear"
+              value="${book.author.deathYear}"
+            />
+            <input
+              type="hidden"
+              name="language"
+              value="${book.author.language}"
+            />
+            <input type="hidden" name="downloads" value="${book.downloads}" />
+          </form>
         </li>
       </ul>
     </main>
