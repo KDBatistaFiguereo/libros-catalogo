@@ -11,15 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kdbf.digitalLibrary.application.domain.model.entity.Author;
 import com.kdbf.digitalLibrary.application.domain.model.entity.Book;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, properties = {
-    "spring.datasource.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL",
-    "spring.datasource.driver-class-name=org.h2.Driver",
-    "spring.datasource.username=sa",
-    "spring.datasource.password=",
-    "spring.jpa.database-platform=org.hibernate.dialect.H2Dialect",
-    "spring.jpa.hibernate.ddl-auto=create-drop",
-    "spring.jpa.show-sql=true"
-})
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class BookPersistenceAdapterTest {
 
   @Autowired
