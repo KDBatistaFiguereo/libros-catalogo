@@ -15,28 +15,12 @@
           <span th:text="${book.language}">Idioma</span>
           <span th:text="${book.downloads}">Descargas</span>
           <form th:action="@{/libros/guardar}" method="post">
-            <input type="hidden" name="title" value="${book.title}" />
-            <input
-              type="hidden"
-              name="authorName"
-              value="${book.author.name}"
-            />
-            <input
-              type="hidden"
-              name="birthYear"
-              value="${book.author.birthYear}"
-            />
-            <input
-              type="hidden"
-              name="deathYear"
-              value="${book.author.deathYear}"
-            />
-            <input
-              type="hidden"
-              name="language"
-              value="${book.author.language}"
-            />
-            <input type="hidden" name="downloads" value="${book.downloads}" />
+            <input type="hidden" name="title" th:value="${book.title}" />
+            <input type="hidden" name="authorName" th:value="${book.author.name}"/>
+            <input type="hidden" name="birthYear" th:value="${book.author.birthYear}"/>
+            <input type="hidden" name="deathYear" th:value="${book.author.deathYear}"/>
+            <input type="hidden" name="language" th:value="${book.language}" />
+            <input type="hidden" name="downloads" th:value="${book.downloads}" />
             <button type="submit">Guardar</button>
           </form>
         </li>

@@ -24,7 +24,7 @@ public class SaveBookService implements SaveBookUseCase {
     Book book = new Book(command.title(),
         author,
         command.title(),
-        command.download());
+        command.downloads());
     return persistPort.createBook(book);
 
   }

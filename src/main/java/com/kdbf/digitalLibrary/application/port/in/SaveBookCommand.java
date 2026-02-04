@@ -8,5 +8,5 @@ public record SaveBookCommand(
     Year birthYear,
     Year deathYear,
     String language,
-    int download) {
+    Integer downloads) {
 }
