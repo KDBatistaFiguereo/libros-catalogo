@@ -1,5 +1,6 @@
 package com.kdbf.digitalLibrary.adapters.out.persistence;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -12,11 +13,8 @@ import com.kdbf.digitalLibrary.adapters.out.persistence.mapper.BookJpaMapper;
 import com.kdbf.digitalLibrary.adapters.out.persistence.repository.AuthorJpaRepository;
 import com.kdbf.digitalLibrary.adapters.out.persistence.repository.BookJpaRepository;
 import com.kdbf.digitalLibrary.adapters.out.persistence.utility.CycleAvoidingMappingContext;
-import com.kdbf.digitalLibrary.application.domain.model.entity.Author;
 import com.kdbf.digitalLibrary.application.domain.model.entity.Book;
-import com.kdbf.digitalLibrary.application.port.out.LoadAuthorsPort;
 import com.kdbf.digitalLibrary.application.port.out.LoadBooksPort;
-import com.kdbf.digitalLibrary.application.port.out.PersistAuthorsPort;
 import com.kdbf.digitalLibrary.application.port.out.PersistBooksPort;
 
 import jakarta.transaction.Transactional;
@@ -60,5 +58,10 @@ public class BookPersistenceAdapter implements
     bookEntity.setAuthor(authorEntity);
 
     return bookJpaMapper.toDomain(bookJpaRepository.saveAndFlush(bookEntity), cycleContext);
+  }
+
+  @Override
+  public List<Book> findAll() {
+    return bookJpaMapper.toDomain(bookJpaRepository.findAll(), cycleContext);
   }
 }

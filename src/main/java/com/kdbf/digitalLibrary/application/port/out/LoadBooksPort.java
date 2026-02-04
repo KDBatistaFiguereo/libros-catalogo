@@ -1,5 +1,6 @@
 package com.kdbf.digitalLibrary.application.port.out;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -9,4 +10,7 @@ public interface LoadBooksPort {
   Optional<Book> findByPublicId(UUID publicId);
 
   boolean existsByPublicId(UUID publicId);
+
+  List<Book> findAll();
+
 }
