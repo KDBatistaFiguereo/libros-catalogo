@@ -1,5 +1,7 @@
 package com.kdbf.digitalLibrary.application.domain.service;
 
+import org.springframework.stereotype.Service;
+
 import com.kdbf.digitalLibrary.application.domain.model.entity.Author;
 import com.kdbf.digitalLibrary.application.domain.model.entity.Book;
 import com.kdbf.digitalLibrary.application.port.in.SaveBookCommand;
@@ -8,6 +10,7 @@ import com.kdbf.digitalLibrary.application.port.out.PersistBooksPort;
 
 import lombok.AllArgsConstructor;
 
+@Service
 @AllArgsConstructor
 public class SaveBookService implements SaveBookUseCase {
 
