@@ -8,6 +8,9 @@
   <body>
     <header></header>
     <main>
+      <form th:action="@{/libros}" method="get">
+        <input type="text" name="language" value="en" />
+      </form>
       <ul>
         <li th:each="book : ${savedBooks}">
           <h3 th:text="${book.title}">Titulo</h3>

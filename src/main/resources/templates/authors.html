@@ -8,6 +8,18 @@
   <body>
     <header></header>
     <main>
+      <div>
+        <form th:action="@{/libros/autores}" method="get">
+          <input
+            type="number"
+            name="livingYear"
+            min="-2000"
+            max="2030"
+            step="1"
+            value="2025"
+          />
+        </form>
+      </div>
       <ul>
         <li th:each="author : ${authorList}">
           <h3 th:text="${author.name}"></h3>
