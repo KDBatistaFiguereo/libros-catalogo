@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <header>
+        <h1>Catalogo libros</h1>
+        <hr />
+      </header>
+      <main>
+        <h3>Busqueda</h3>
+        <ul>
+          <li>
+            <a th:href="@{/libros/busqueda}">Buscar libros</a>
+          </li>
+        </ul>
+        <h3>Registros libros</h3>
+        <ul>
+          <li>
+            <li><a th:href="@{/libros/historial}">Ver historial busqueda libros</a></li>
+            <li><a th:href="@{/libros}">Ver libros guardados</a></li>
+          </li>
+        </ul>
+        <h3>Registros autores</h3>
+        <ul>
+          <li><a href="@{/libros/autores}">Ver historial busqueda autores</a></li>
+          <li><a href="@{/autores}">Ver autores guardados</a></li>
+        </ul>
+      </main>
+    </div>
+  </body>
+</html>
