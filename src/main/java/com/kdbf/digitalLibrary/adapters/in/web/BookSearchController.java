@@ -28,8 +28,13 @@ public class BookSearchController {
   }
 
   @GetMapping("/libros/busqueda")
-  public String searchBooks(@RequestParam String title, Model model) {
-    FindBooksByTitleQuery query = new FindBooksByTitleQuery(title);
+  public String searchBooks(@RequestParam(required = false) String title, Model model) {
+    FindBooksByTitleQuery query;
+    if (title == null) {
+      query = new FindBooksByTitleQuery("");
+    } else {
+      query = new FindBooksByTitleQuery(title);
+    }
     List<Book> myBooks = findBooksService.findBooksByTitle(query);
 
     model.addAttribute("bookList", myBooks);
