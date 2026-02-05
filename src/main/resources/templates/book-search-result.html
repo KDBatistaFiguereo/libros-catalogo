@@ -8,6 +8,12 @@
   <body>
     <header></header>
     <main>
+      <div>
+        <form th:action="@{/libros/busqueda}" method="get">
+          <input type="search" name="title" placeholder="Don quixote" />
+          <button type="submit">Buscar</button>
+        </form>
+      </div>
       <ul>
         <li th:each="book : ${bookList}">
           <h3 th:text="${book.title}">Titulo</h3>
@@ -16,11 +22,27 @@
           <span th:text="${book.downloads}">Descargas</span>
           <form th:action="@{/libros/guardar}" method="post">
             <input type="hidden" name="title" th:value="${book.title}" />
-            <input type="hidden" name="authorName" th:value="${book.author.name}"/>
-            <input type="hidden" name="birthYear" th:value="${book.author.birthYear}"/>
-            <input type="hidden" name="deathYear" th:value="${book.author.deathYear}"/>
+            <input
+              type="hidden"
+              name="authorName"
+              th:value="${book.author.name}"
+            />
+            <input
+              type="hidden"
+              name="birthYear"
+              th:value="${book.author.birthYear}"
+            />
+            <input
+              type="hidden"
+              name="deathYear"
+              th:value="${book.author.deathYear}"
+            />
             <input type="hidden" name="language" th:value="${book.language}" />
-            <input type="hidden" name="downloads" th:value="${book.downloads}" />
+            <input
+              type="hidden"
+              name="downloads"
+              th:value="${book.downloads}"
+            />
             <button type="submit">Guardar</button>
           </form>
         </li>
