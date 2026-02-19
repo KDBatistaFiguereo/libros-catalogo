@@ -1,5 +1,7 @@
 # Catálogo Digital de Libros
 
+[English Version](#english-version)
+
 Aplicación web para la búsqueda, catalogación y gestión de libros y autores, con integración con la API del Proyecto Gutenberg para acceder a libros de dominio público.
 
 ## Características Principales
@@ -159,4 +161,170 @@ La aplicación sigue el patrón **Arquitectura Hexagonal**:
 ## Licencia
 
 Este proyecto es para fines de aprendizaje.
+
+---
+
+# English Version
+
+Digital Book Catalog
+
+Web application for searching, cataloging, and managing books and authors, with integration with the Gutenberg Project API to access public domain books.
+
+## Main Features
+
+- **Book Search**: Search books by title via the Gutenberg Project API
+- **Book Management**: Save and catalog books locally
+- **Author Management**: View and manage author information
+- **Search History**: Records book and author search sessions
+- **Multi-language Support**: Language filtering capabilities
+- **Web Interface**: Interface with Thymeleaf templates
+
+## Tools
+
+- **Backend Framework**: Spring Boot 3.5.10
+- **Java Version**: Java 21
+- **Architecture**: Hexagonal Architecture
+- **Web Framework**: Spring MVC with Thymeleaf
+- **Database**: PostgreSQL (dev), H2 (testing)
+- **Build Tool**: Maven
+- **Main Libraries**:
+  - Lombok (boilerplate code reduction)
+  - MapStruct 1.6.3 (object mapping)
+  - Spring Validation
+  - Jackson for JSON processing
+
+## Project Structure
+
+```
+libros-catalogo/
+├── application/
+│   ├── domain/           # Domain entities and services
+│   │   ├── entities/     # Book, Author
+│   │   └── services/     # FindBooksByTitleService, SaveBookService
+│   ├── port/             # Input and output ports
+│   │   ├── input/        # Commands and queries
+│   │   └── output/       # Interfaces for external integrations
+│   └── adapter/          # Implementation adapters
+│       ├── web/          # Controllers
+│       ├── persistence/  # JPA repositories
+│       └── api/          # External API clients
+├── common/
+│   └── session/          # Aspect to intercept book searches and add history
+├── docker-compose.yml    # Docker configuration
+└── pom.xml              # Maven configuration
+```
+
+## Installation and Configuration
+
+### Prerequisites
+
+- Java 21
+- Maven 3.6+
+- Docker and Docker Compose
+
+### 1. Environment Variables Configuration
+
+Create a `.env` file in the project root based on `.example.env`:
+
+```bash
+# Copy example file
+cp .example.env .env
+```
+
+Edit `.env` with your credentials:
+
+```env
+POSTGRES_PASSWORD=your_postgres_password
+POSTGRES_USER=your_postgres_user
+POSTGRES_DB=libros_catalogo
+PORT=5432
+DB_HOST=localhost
+```
+
+### 2. Start Database
+
+```bash
+# Start PostgreSQL in Docker
+docker-compose up -d
+
+# Verify container is running
+docker-compose ps
+```
+
+### 3. Run the Application
+
+```bash
+# Compile the project
+mvn clean compile
+
+# Run tests (optional)
+mvn test
+
+# Start the application
+mvn spring-boot:run
+```
+
+### 4. Access the Application
+
+Open your browser at: `http://localhost:8080`
+
+## Application Routes
+
+- `/` - Main page with navigation menu
+- `/libros/busqueda` - Book search interface
+- `/libros/guardar` - Book saving functionality
+- `/libros/historial` - Search history
+- `/libros` - Saved books
+- `/libros/autores` - Author search history
+- `/autores` - Saved authors
+
+## Tests
+
+The project has **test coverage (not yet complete)**:
+
+```bash
+# Run all tests
+mvn test
+```
+
+### Test Types
+
+- **Unit Tests**: Domain entities and services
+- **Integration Tests**: Controllers, repositories, and API adapters
+- **MockWebServer**: For testing external API integrations
+
+## External Integrations
+
+### Gutenberg Project API
+
+- **Base URL**: `https://gutendex.com/books/`
+- **Functionalities**:
+  - Search books by title
+  - Access book and author metadata
+  - Transform API responses to domain models
+
+## Architecture
+
+The application follows the **Hexagonal Architecture** pattern:
+
+### Domain Layer (`application/domain`)
+
+- **Entities**: `Book`, `Author`
+- **Services**: Domain use cases
+- **Ports**: Interfaces for external communication
+
+### Application Layer (`application/port`)
+
+- **Input Ports**: Commands and queries
+- **Output Ports**: Interfaces for integrations
+
+### Adapter Layer (`application/adapter`)
+
+- **Web**: Controllers and Thymeleaf templates
+- **Persistence**: JPA adapters and repositories
+- **API**: Clients for external services
+
+## License
+
+This project is for educational purposes.
 
