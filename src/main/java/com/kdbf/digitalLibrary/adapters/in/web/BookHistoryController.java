@@ -20,14 +20,14 @@ public class BookHistoryController {
   private final BookSearchHistory bookSearchHistory;
   private final GetBooksService getBooksService;
 
-  @GetMapping("/libros/historial")
+  @GetMapping("/books/history")
   public String seeHistory(Model model) {
     List<Book> bookHistory = bookSearchHistory.getBookHistory();
     model.addAttribute("historyList", bookHistory);
     return "book-history";
   }
 
-  @GetMapping("/libros")
+  @GetMapping("/books")
   public String showSavedBooks(@RequestParam(required = false) String language, Model model) {
     List<Book> savedBooks;
     if (language == null) {

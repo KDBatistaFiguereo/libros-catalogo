@@ -9,7 +9,7 @@
     <header></header>
     <main>
       <div>
-        <form th:action="@{/libros/busqueda}" method="get">
+        <form th:action="@{/books/search}" method="get">
           <input type="search" name="title" placeholder="Don quixote" />
           <button type="submit">Buscar</button>
         </form>
@@ -20,7 +20,7 @@
           <p th:text="${book.author.name}">Autor</p>
           <span th:text="${book.language}">Idioma</span>
           <span th:text="${book.downloads}">Descargas</span>
-          <form th:action="@{/libros/guardar}" method="post">
+          <form th:action="@{/books/save}" method="post">
             <input type="hidden" name="title" th:value="${book.title}" />
             <input
               type="hidden"

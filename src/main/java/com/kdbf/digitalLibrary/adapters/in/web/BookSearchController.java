@@ -27,7 +27,7 @@ public class BookSearchController {
     this.saveBookService = saveBookService;
   }
 
-  @GetMapping("/libros/busqueda")
+  @GetMapping("/books/search")
   public String searchBooks(@RequestParam(required = false) String title, Model model) {
     FindBooksByTitleQuery query;
     if (title == null) {
@@ -43,13 +43,13 @@ public class BookSearchController {
 
   }
 
-  @PostMapping("/libros/guardar")
+  @PostMapping("/books/save")
   public String saveBook(@ModelAttribute SaveBookCommand command,
       RedirectAttributes redirectAttributes) {
     saveBookService.saveBook(command);
     redirectAttributes.addAttribute("title", command.title());
     redirectAttributes.addFlashAttribute("message", "Book saved succesfully.");
-    return "redirect:/libros/busqueda";
+    return "redirect:/books/search";
 
   }
 

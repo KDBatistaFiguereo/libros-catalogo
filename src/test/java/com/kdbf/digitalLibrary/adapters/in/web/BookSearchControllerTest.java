@@ -51,7 +51,7 @@ public class BookSearchControllerTest {
                     Year.of(1894)),
                 "en",
                 20)));
-    mockMvc.perform(get("/libros/busqueda").param("title", "strange"))
+    mockMvc.perform(get("/books/search").param("title", "strange"))
         .andExpect(status().isOk())
         .andExpect(view().name("book-search-result"))
         .andExpect(model().attributeExists("bookList"))

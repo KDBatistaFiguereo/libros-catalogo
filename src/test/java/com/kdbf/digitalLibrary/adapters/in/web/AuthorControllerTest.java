@@ -36,7 +36,7 @@ public class AuthorControllerTest {
             Year.of(1850),
             Year.of(1894))));
 
-    mockMvc.perform(get("/libros/autores"))
+    mockMvc.perform(get("/authors/history"))
         .andExpect(status().isOk())
         .andExpect(view().name("authors"))
         .andExpect(model().attributeExists("authorList"))

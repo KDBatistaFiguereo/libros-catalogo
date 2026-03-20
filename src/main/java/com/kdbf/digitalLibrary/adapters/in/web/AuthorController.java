@@ -18,7 +18,7 @@ public class AuthorController {
   private final BookSearchHistory bookHistory;
   private final GetBooksService getBooksService;
 
-  @GetMapping("/libros/autores")
+  @GetMapping("/authors/history")
   public String showAuthors(@RequestParam(required = false) Integer livingYear, Model model) {
     List<Author> authors;
     if (livingYear == null) {
@@ -32,7 +32,7 @@ public class AuthorController {
   }
 
   // TODO: refactor
-  @GetMapping("/autores")
+  @GetMapping("/authors")
   public String showSavedAuthors(@RequestParam(required = false) Integer livingYear, Model model) {
     List<Author> authors;
     if (livingYear == null) {

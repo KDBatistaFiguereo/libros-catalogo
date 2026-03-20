@@ -9,18 +9,18 @@
           <li>
             <a href="#">My books</a>
             <ul>
-              <li><a href="">History</a></li>
-              <li><a href="">Saved</a></li>
+              <li><a th:href="@{/books/history}">History</a></li>
+              <li><a th:href="@{/books}">Saved</a></li>
             </ul>
           </li>
           <li>
             <a href="#">My authors</a>
             <ul>
-              <li><a href="">History</a></li>
-              <li><a href="">Saved</a></li>
+              <li><a th:href="@{/authors/history}">History</a></li>
+              <li><a th:href="@{/authors}">Saved</a></li>
             </ul>
           </li>
-          <li><a href="">Search Books</a></li>
+          <li><a th:href="@{/books/search}">Search Books</a></li>
         </ul>
       </nav>
     </header>

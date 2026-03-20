@@ -38,7 +38,7 @@ public class BookHistoryControllerTest {
                 Year.of(1894)),
             "en",
             10)));
-    mockMvc.perform(get("/libros/historial"))
+    mockMvc.perform(get("/books/history"))
         .andExpect(status().isOk())
         .andExpect(view().name("book-history"))
         .andExpect(model().attributeExists("historyList"))
