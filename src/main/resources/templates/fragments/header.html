@@ -1,7 +1,11 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
   <body>
-    <header th:fragment="global-header">
+    <th:block th:fragment="header-assets">
+      <link rel="stylesheet" th:href="@{/css/library-header.css}">
+      <script th:src="@{/js/header-logic.js}" defer></script>
+    </th:block>
+    <header th:fragment="global-header" id="library-header">
       <h1>Library</h1>
       <nav>
         <ul>

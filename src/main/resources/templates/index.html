@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <th:block th:replace="~{fragments/header :: header-assets}"></th:block>
   </head>
   <body>
-    <div>
-      <header th:insert="~{fragments/header :: global-header}"></header>
-    </div>
+    <header th:insert="~{fragments/header :: global-header}"></header>
+    <main>welcome!</main>
   </body>
 </html>
